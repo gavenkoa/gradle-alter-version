@@ -1,0 +1,21 @@
+
+apply plugin: 'java'
+apply plugin: 'alter-ver'
+apply plugin: 'maven-publish'
+
+alterVer {
+    version = '0.2'
+}
+
+publishing.repositories {
+    maven {
+        name "build"
+        url "${rootProject.buildDir}/repo"
+    }
+}
+
+publishing.publications {
+    jar(MavenPublication) {
+        from project.components.java
+    }
+}
