@@ -36,9 +36,9 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
 
-    - name: Setup Gradle
-      # https://github.com/gradle/gradle-build-action
-      uses: gradle/gradle-build-action@v2
+      - name: Setup Gradle
+        # https://github.com/gradle/gradle-build-action
+        uses: gradle/gradle-build-action@v2
 
-    - name: Execute Gradle build
-      run: ./gradlew build
+      - name: Execute Gradle build
+        run: ./gradlew build
