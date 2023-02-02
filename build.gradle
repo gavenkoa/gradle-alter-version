@@ -1,3 +1,6 @@
+plugins {
+  id "org.sonarqube" version "3.5.0.2730"
+}
 
 apply plugin: 'java'
 apply plugin: 'alter-ver'
@@ -18,4 +21,14 @@ publishing.publications {
     jar(MavenPublication) {
         from project.components.java
     }
+}
+
+// Build with Java 11.
+// SONAR_TOKEN=... mygradle11 sonar
+sonarqube {
+  properties {
+    property "sonar.projectKey", "gavenkoa_sonar"
+    property "sonar.organization", "gavenkoa"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
