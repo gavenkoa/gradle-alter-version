@@ -2,6 +2,7 @@ name: 'Simple Github Action'
 
 on:
   push:
+  workflow_dispatch:
 
 permissions:
   contents: read
