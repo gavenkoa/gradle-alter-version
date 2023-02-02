@@ -33,7 +33,7 @@ jobs:
       - name: Set Java
         uses: actions/setup-java@v3
         with:
-          java-version: '8'
+          java-version: '11'
           distribution: 'temurin'
 
       - name: Setup Gradle
@@ -42,3 +42,8 @@ jobs:
 
       - name: Execute Gradle build
         run: sh ./gradlew build
+
+      - name: Execute Sonar
+        run: sh ./gradlew sonar
+        env:
+          SONAR_TOKEN: ${{ SONAR_TOKEN }}
