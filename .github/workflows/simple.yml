@@ -21,10 +21,8 @@ jobs:
         env:
           GREETING: OK
       - name: List files
-        run: echo $GREETING, $USER.
+        run: pwd && ls
         shell: bash
-        env:
-          GREETING: OK
 
   stage2:
     runs-on: ubuntu-latest
