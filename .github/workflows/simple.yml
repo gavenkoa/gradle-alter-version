@@ -1,0 +1,43 @@
+name: 'Simple Github Action'
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+concurrency:
+
+jobs:
+  stage1:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Greeting
+        run: echo $GREETING, $USER.
+        shell: bash
+        env:
+          GREETING: OK
+      - name: List files
+        run: echo $GREETING, $USER.
+        shell: bash
+        env:
+          GREETING: OK
+
+  stage2:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: build
